@@ -29,7 +29,13 @@ export const RegistrationForm = () => {
   });
 
   const onSubmit = async (data: OurSchema) => {
-    console.log('Form data:', data);
+    fetch('/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
 
   return (
